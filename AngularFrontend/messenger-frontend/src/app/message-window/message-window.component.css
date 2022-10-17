@@ -1,0 +1,89 @@
+p {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 0 20px;
+    font-family:"Open Sans";
+  }
+  
+  .container-darker {
+    border: 1px solid #588157;
+    background-color: #192b2a;
+    border-color: rgb(77, 75, 75);
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 60%;
+    color: white;
+  }
+  
+  .container {
+    border: 1px solid #588157;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 60%;
+    margin-right: 10px;
+    border-color: rgb(77, 75, 75);
+    background-color: #656d4a;
+    color: #081c15;
+  }
+  
+  .container::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .right {
+    float: right;
+    margin-left: 20px;
+    margin-right:0;
+  }
+  
+  .sender {
+      color: #660708;
+  }
+
+  .but1 {
+    background-color: #192b2a;
+    border:none;
+    border-radius: 100%;
+    color: black;
+    padding: 6px 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: "Open Sans";
+    font-size: 14px;
+    margin: 1px 1px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .but1:hover {
+    background-color: rgb(61, 57, 57); 
+  }
+
+  input[type=text] {
+    width: 40%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: none;
+    background-color: #192b2a;
+    border-bottom: 2px solid #DDA15E;
+    box-sizing: border-box;
+    color: white;
+    font-size : 16px;
+    font-family: "Open Sans";
+    outline: none;
+  }
+  
+  input[type=text]:hover {
+    border-bottom: 2px solid #BC6C25;
+  }
+
+  hr {
+    display: block; height: 1px;
+    border: 0; border-top: 1px solid rgb(70, 69, 69);
+    margin: 1em 0; padding: 0;
+  }

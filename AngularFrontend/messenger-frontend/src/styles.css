@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 900;
+    src: local('Open Sans'), local('OpenSans'), url('http://themes.googleusercontent.com/static/fonts/opensans/v5/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff') format('woff');
+  }
+
+  h1 {
+    font-family:"Open Sans";
+    color: white;
+    text-align: center;
+    font-size: 40px;
+  }
+
+  h2 {
+    font-family:"Open Sans";
+    color: white;
+    text-align: center;
+  }
+
+   h3 {
+    font-family:"Open Sans";
+    color: white;
+    text-align: center;
+   }
+  
+  html {
+    background-color: #192b2a;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #192b2a; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(63, 63, 63); 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }

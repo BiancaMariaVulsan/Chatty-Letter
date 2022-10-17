@@ -1,0 +1,53 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class = "Users" *ngFor="let user of users | async">
+    <div *ngIf="user.id == sender">
+        <h3>From {{ user.username }}</h3>
+    </div>
+    <div *ngIf="user.id == receiver">
+        <h3>To {{ user.username }}</h3>
+    </div>
+</div>
+
+<div class = "PreviousMessages" *ngFor="let prevmsg of prevmessages">
+    <div *ngIf="prevmsg.sender == sender && prevmsg.receiver == receiver">
+        <div class="container">
+            <div class="right">
+                <p class="sender">You</p>
+            </div>
+            <p>{{ prevmsg.textcontent }}</p>
+        </div>
+        
+    </div>
+    <div *ngIf="prevmsg.sender == receiver && prevmsg.receiver == sender">
+        <div class="container-darker">
+            <p>{{ prevmsg.textcontent }}</p>
+        </div>
+    </div>
+</div>
+
+<div>
+    <hr>
+    <p style="color: #606C38 ;font-size: 14px; text-align: center;  padding: 0; font-family: 'Open Sans';">Now</p>
+    <hr>
+</div>
+
+<div class = "Messages" *ngFor="let data of messages">
+    <div *ngIf="data.senderid == receiver">
+        <div class="container-darker">
+            <p>{{ data.msg }}</p>
+        </div>        
+    </div>
+    <div *ngIf="data.receiverid == receiver && data.senderid == sender">
+        <div class="container">
+            <div class="right">
+                <p class="sender">You</p>
+            </div>  
+            <p>{{ data.msg }}</p>
+        </div> 
+    </div>
+</div>
+<br>
+<input type="text" [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage()" />
+<button class="but1" (click)="sendMessage()"><i class="fa fa-paper-plane" style="font-size:20px;color:#606C38"></i></button>

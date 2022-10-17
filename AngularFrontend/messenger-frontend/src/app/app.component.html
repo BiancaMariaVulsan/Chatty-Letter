@@ -1,0 +1,27 @@
+
+<body>
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">×</a>
+    <a routerLink="/login" class="button">Log In</a>
+    <a routerLink="/signup" class="button">Sign Up</a>
+    <br>
+    <hr>
+    <a class="logout" (click)="logout()">Sign Out</a>
+  </div>
+
+  <div id="main">
+    <div class="navbar">
+      <button class="openbtn" (click)="openNav()">☰</button>
+    </div>  
+
+    <div class="header">
+      <h1>Chatty Letter</h1>
+      <h4>Let's keep in touch!</h4><br>
+    </div>  
+
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+</body>
