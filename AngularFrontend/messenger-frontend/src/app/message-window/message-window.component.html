@@ -51,3 +51,7 @@
 <br>
 <input type="text" [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage()" />
 <button class="but1" (click)="sendMessage()"><i class="fa fa-paper-plane" style="font-size:20px;color:#606C38"></i></button>
+
+<div>
+    <button class="btn-back" (click)="onBackClicked()">Back</button>
+</div>

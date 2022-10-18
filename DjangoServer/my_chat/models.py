@@ -5,7 +5,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.shortcuts import get_object_or_404
 from rest_framework.authtoken.models import Token
-
+from django.utils import timezone
 
 class ChatView(models.Model):
     sender = models.ForeignKey(User, on_delete=models.CASCADE, default=None, related_name='sender')

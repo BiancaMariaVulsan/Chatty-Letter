@@ -92,5 +92,9 @@ export class MessageWindowComponent implements OnInit {
             this.message = '';
         }
     }
+    
+    onBackClicked() {
+        this.router.navigate(['/users', this.crntauthenticuser]);
+    }
 
 }
