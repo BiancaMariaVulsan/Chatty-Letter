@@ -5,49 +5,19 @@ h4 {
     text-align: center;
 }
 
-  /*.button {
-    background-color: white; 
-    border: 1px solid tomato;
-    border-radius: 5px;
-    color: black;
-    padding: 3px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-family: "Open Sans";
-    font-size: 14px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-  }
-  */
-  
-  /*.button:hover {
-    background-color: tomato;
-    color: white;
-  }*/
+.container {
+  padding-bottom: 75px;
+}
 
-  .container {
-    padding-bottom: 75px;
-  }
-
-  .site-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #606C38;
-    color: white;
-    text-align: center;
- }
-
- /*.hambaaaaa {
-   position: relative;
-   left: 0;
-   top: 535px;
-   width: 100%;
-   transition: 0.5s;
- }*/
+.site-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #606C38;
+  color: white;
+  text-align: center;
+}
 
 .sidebar {
   height: 100%;
@@ -117,6 +87,8 @@ hr {
 #main {
   transition: margin-left .5s;
   padding: 16px;
+  background-color: #192b2a;
+  color: white;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */

@@ -1,57 +1,101 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div class = "Users" *ngFor="let user of users | async">
-    <div *ngIf="user.id == sender">
-        <h3>From {{ user.username }}</h3>
-    </div>
-    <div *ngIf="user.id == receiver">
-        <h3>To {{ user.username }}</h3>
-    </div>
-</div>
 
-<div class = "PreviousMessages" *ngFor="let prevmsg of prevmessages">
-    <div *ngIf="prevmsg.sender == sender && prevmsg.receiver == receiver">
-        <div class="container">
-            <div class="right">
-                <p class="sender">You</p>
+<div class="container col-md-12 col-lg-8">
+
+    <div class="card-header justify-content-between align-items-center p-3 text-white border-bottom-0"
+        style="border-top-left-radius: 15px; border-top-right-radius: 15px; background-color: #606C38;">
+        <div *ngFor="let user of users | async">
+            <h3 *ngIf="user.id == receiver">{{ user.username }}</h3>
+        </div>
+    </div>
+
+    <div class="container py-5" style="background-color: white; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
+        <div class="row">
+        <div class="col-12 mb-4 mb-md-0">
+
+            <!-- Message History -->
+            <div *ngFor="let prevmsg of prevmessages">
+                <div *ngIf="prevmsg.sender == sender && prevmsg.receiver == receiver">
+                    <div class="d-flex justify-content-end mb-4">
+                        <div class="card mask-custom">
+                            <div class="card-header d-flex justify-content-between p-3"
+                                style="border-bottom: 1px solid rgba(255,255,255,.3);">
+                            <p class="text-light small mb-0"><i class="fa fa-clock-o" aria-hidden="true"></i> 13 mins ago</p>
+                            </div>
+                            <div class="card-body">
+                                <p class="mb-0">{{ prevmsg.textcontent }}</p>
+                            </div>
+                        </div>
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp" alt="avatar 1" style="width: 45px; height: 100%;">
+                    </div>
+                </div>
+                <div *ngIf="prevmsg.sender == receiver && prevmsg.receiver == sender && prevmsg.sender != prevmsg.receiver">
+                    <div class="d-flex justify-content-start mb-4">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp" alt="avatar 1" style="width: 45px; height: 100%;">
+                        <div class="card mask-custom">
+                            <div class="card-header d-flex justify-content-between p-3"
+                            style="border-bottom: 1px solid rgba(255,255,255,.3);">
+                            <p class="text-light small mb-0"><i class="fa fa-clock-o" aria-hidden="true"></i> 12 mins ago</p>
+                            </div>
+                            <div class="card-body">
+                                <p class="mb-0">{{ prevmsg.textcontent }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p>{{ prevmsg.textcontent }}</p>
-        </div>
-        
-    </div>
-    <div *ngIf="prevmsg.sender == receiver && prevmsg.receiver == sender">
-        <div class="container-darker">
-            <p>{{ prevmsg.textcontent }}</p>
-        </div>
-    </div>
-</div>
 
-<div>
-    <hr>
-    <p style="color: #606C38 ;font-size: 14px; text-align: center;  padding: 0; font-family: 'Open Sans';">Now</p>
-    <hr>
-</div>
+            <!-- Current conversation messages -->
+            <div class = "row" *ngFor="let data of messages">
+                <div *ngIf="data.receiverid == receiver && data.senderid == sender">
+                    <div class="d-flex justify-content-end mb-4">
+                        <div class="card mask-custom">
+                            <div class="card-header d-flex justify-content-between p-3"
+                                style="border-bottom: 1px solid rgba(255,255,255,.3);">
+                            <p class="text-light small mb-0"><i class="fa fa-clock-o" aria-hidden="true"></i> 13 mins ago</p>
+                            </div>
+                            <div class="card-body">
+                                <p class="mb-0">{{ data.msg }}</p>
+                            </div>
+                        </div>
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp" alt="avatar 1" style="width: 45px; height: 100%;">
+                    </div>       
+                </div>
+                <div *ngIf="data.senderid == receiver && data.senderid != data.receiverid">
+                    <div class="d-flex justify-content-start mb-4">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp" alt="avatar 1" style="width: 45px; height: 100%;">
+                        <div class="card mask-custom">
+                            <div class="card-header d-flex justify-content-between p-3"
+                            style="border-bottom: 1px solid rgba(255,255,255,.3);">
+                            <p class="text-light small mb-0"><i class="fa fa-clock-o" aria-hidden="true"></i> 12 mins ago</p>
+                            </div>
+                            <div class="card-body">
+                                <p class="mb-0">{{ data.msg }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
 
-<div class = "Messages" *ngFor="let data of messages">
-    <div *ngIf="data.senderid == receiver">
-        <div class="container-darker">
-            <p>{{ data.msg }}</p>
-        </div>        
+            <!-- Type message -->
+            <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
+                <input type="text" class="form-control form-control-lg w-100" id="exampleFormControlInput1"
+                    placeholder="Type message" [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage()">
+                <button class="but1" (click)="sendMessage()"><i class="fa fa-paper-plane" style="font-size:20px;color:#606C38"></i></button>
+            </div>
+            
+            <!-- Back Button -->
+            <div class="row">
+                <div class="right">
+                    <button class="btn-back btn btn-primary"  (click)="onBackClicked()"><i class="fa fa-arrow-left fa-2x" style="color: #192b2a;" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>    
     </div>
-    <div *ngIf="data.receiverid == receiver && data.senderid == sender">
-        <div class="container">
-            <div class="right">
-                <p class="sender">You</p>
-            </div>  
-            <p>{{ data.msg }}</p>
-        </div> 
-    </div>
-</div>
-<br>
-<input type="text" [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage()" />
-<button class="but1" (click)="sendMessage()"><i class="fa fa-paper-plane" style="font-size:20px;color:#606C38"></i></button>
 
-<div>
-    <button class="btn-back" (click)="onBackClicked()">Back</button>
+    </div>
+
 </div>

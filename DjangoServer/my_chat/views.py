@@ -46,7 +46,7 @@ def create_new_chat(request):
         querydictstr = request.body.decode('UTF-8')
         querydict = ast.literal_eval(querydictstr)
         ChatView.create_chat(querydict['textcontent'], querydict['sender'], querydict['receiver'])
-    return HttpResponse("Bonjour Hamba")
+    return HttpResponse()
 
 @api_view(('POST',))
 @csrf_exempt

@@ -69,7 +69,7 @@ export class MessageWindowComponent implements OnInit {
         this.webSocketService
           .getMessages()
           .subscribe((data: any) => {
-            this.messages.push(data);
+                this.messages.push(data);
           });
     }
 
@@ -84,7 +84,9 @@ export class MessageWindowComponent implements OnInit {
         }
 
         if(this.message != ""){
-            this.messages.push({msg: this.message, senderid: this.sender, receiverid: this.receiver})
+            if (this.receiver != this.sender) {
+                this.messages.push({msg: this.message, senderid: this.sender, receiverid: this.receiver})
+            }
 
             this.webSocketService.storeMessagedb(this.chatdetails, this.tokenManager.retrieveToken().token);
             

@@ -16,7 +16,7 @@ p {
     color: white;
   }
   
-  .container {
+  .container-custom {
     border: 1px solid #588157;
     border-radius: 5px;
     padding: 10px;
@@ -44,7 +44,7 @@ p {
   }
 
   .but1 {
-    background-color: #192b2a;
+    background-color: white;
     border:none;
     border-radius: 100%;
     color: black;
@@ -89,10 +89,10 @@ p {
     padding: 12px 20px;
     margin: 8px 0;
     border: none;
-    background-color: #192b2a;
+    background-color: white;
     border-bottom: 2px solid #DDA15E;
     box-sizing: border-box;
-    color: white;
+    color: #192b2a;
     font-size : 16px;
     font-family: "Open Sans";
     outline: none;
@@ -106,4 +106,17 @@ p {
     display: block; height: 1px;
     border: 0; border-top: 1px solid rgb(70, 69, 69);
     margin: 1em 0; padding: 0;
+  }
+
+  .mask-custom {
+    background: #192b2a;
+    border-radius: 2em;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    background-clip: padding-box;
+    box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+    }
+      
+  .form-control:focus {
+    border-color: transparent;
+    box-shadow: inset 0px 0px 0px 1px transparent;
   }
