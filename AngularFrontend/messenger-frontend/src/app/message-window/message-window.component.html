@@ -22,7 +22,7 @@
                         <div class="card mask-custom">
                             <div class="card-header d-flex justify-content-between p-3"
                                 style="border-bottom: 1px solid rgba(255,255,255,.3);">
-                            <p class="text-light small mb-0"><i class="fa fa-clock-o" aria-hidden="true"></i> 13 mins ago</p>
+                            <p class="text-light small mb-0"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ prevmsg.sent_date | date:'yyyy-MM-dd hh:mm' }} </p>
                             </div>
                             <div class="card-body">
                                 <p class="mb-0">{{ prevmsg.textcontent }}</p>
@@ -37,7 +37,7 @@
                         <div class="card mask-custom">
                             <div class="card-header d-flex justify-content-between p-3"
                             style="border-bottom: 1px solid rgba(255,255,255,.3);">
-                            <p class="text-light small mb-0"><i class="fa fa-clock-o" aria-hidden="true"></i> 12 mins ago</p>
+                            <p class="text-light small mb-0"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ prevmsg.sent_date | date:'yyyy-MM-dd hh:mm' }} </p>
                             </div>
                             <div class="card-body">
                                 <p class="mb-0">{{ prevmsg.textcontent }}</p>
@@ -54,7 +54,7 @@
                         <div class="card mask-custom">
                             <div class="card-header d-flex justify-content-between p-3"
                                 style="border-bottom: 1px solid rgba(255,255,255,.3);">
-                            <p class="text-light small mb-0"><i class="fa fa-clock-o" aria-hidden="true"></i> 13 mins ago</p>
+                            <p class="text-light small mb-0"><i class="fa fa-clock-o" aria-hidden="true"></i> just now </p>
                             </div>
                             <div class="card-body">
                                 <p class="mb-0">{{ data.msg }}</p>
@@ -69,7 +69,7 @@
                         <div class="card mask-custom">
                             <div class="card-header d-flex justify-content-between p-3"
                             style="border-bottom: 1px solid rgba(255,255,255,.3);">
-                            <p class="text-light small mb-0"><i class="fa fa-clock-o" aria-hidden="true"></i> 12 mins ago</p>
+                            <p class="text-light small mb-0"><i class="fa fa-clock-o" aria-hidden="true"></i> just now </p>
                             </div>
                             <div class="card-body">
                                 <p class="mb-0">{{ data.msg }}</p>

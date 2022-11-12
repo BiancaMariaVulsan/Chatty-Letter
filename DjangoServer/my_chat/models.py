@@ -13,6 +13,7 @@ class ChatView(models.Model):
     sent_date = models.DateTimeField('date published')
     textcontent = models.TextField(default = 'Hi Hamba !')
 
+
     def __str__(self):
         return str(self.id)
 

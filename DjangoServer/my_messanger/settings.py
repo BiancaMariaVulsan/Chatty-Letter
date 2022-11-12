@@ -66,6 +66,7 @@ MIDDLEWARE = [
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:4200',
     'http://localhost:4300',
+    'http://localhost:4300',
 ]
 
 ROOT_URLCONF = 'my_messanger.urls'

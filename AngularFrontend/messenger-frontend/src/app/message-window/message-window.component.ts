@@ -98,5 +98,4 @@ export class MessageWindowComponent implements OnInit {
     onBackClicked() {
         this.router.navigate(['/users', this.crntauthenticuser]);
     }
-
 }
