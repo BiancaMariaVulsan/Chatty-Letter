@@ -66,3 +66,4 @@ def signup(request):
 def get_current_user_id(request):
     print(request.user.id)
     return HttpResponse(request.user.id)
+

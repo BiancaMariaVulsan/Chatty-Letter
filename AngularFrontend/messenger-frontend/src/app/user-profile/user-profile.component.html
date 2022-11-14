@@ -10,7 +10,7 @@
   <div class="container-flex">
     <div class="mb-2" *ngFor="let user of users | async; index as userId">
         <span><img [src]="user.avatar" class="e-avatar"></span>
-        <b><a [title]="user.username" [routerLink]="['/messagewindow', usercurrentId, userId+1]">
+        <b><a class="style-a" [title]="user.username" [routerLink]="['/messagewindow', usercurrentId, userId+1]">
           {{ user.username }}
         </a></b>
     </div>

@@ -26,5 +26,10 @@ a:hover {
   align-items: center;
 }
 
+.style-a {
+  font-size: large;
+  margin-left: 10px;
+  text-decoration: none;
+}
 
 
