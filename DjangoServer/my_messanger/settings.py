@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'rest_auth',
-    'my_chat'
+    'my_chat',
+    'accounts'
 ]
 
 REST_FRAMEWORK = {
@@ -89,6 +90,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'my_messanger.wsgi.application'
 
+AUTH_USER_MODEL = 'accounts.Account'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

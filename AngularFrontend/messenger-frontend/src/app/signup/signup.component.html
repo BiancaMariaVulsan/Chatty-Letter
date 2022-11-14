@@ -2,5 +2,12 @@
     <h2>Sign Up</h2>
     <input type="text" [(ngModel)]="register.username" placeholder="Username" required><br>
     <input [(ngModel)]="register.password" type="password" placeholder="Password" required><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-8 col-md-3 col-sm-3 mb-5 mt-5" *ngFor="let avatar of avatars">
+                <button class="btn-background btn" (click)="setUserAvatar($event, avatar)"><img [src]=avatar alt="avatar-img" class="e-avatar"></button><br>
+            </div>
+        </div>
+    </div>
     <button class="but1" (click)="registerNewUser()">SignUp</button>
 </div>

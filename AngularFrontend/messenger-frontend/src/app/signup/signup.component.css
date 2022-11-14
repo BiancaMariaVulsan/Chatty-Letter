@@ -1,3 +1,16 @@
+.btn-background {
+  background-color: transparent;
+  border: none;
+}
+
+.btn:hover {
+  border-bottom: 5px solid #606C38;
+}
+
+.btn:focus {
+  border-bottom: 5px solid #606C38;
+}
+
 .but1 {
   background-color: #192b2a;
   border: 1px solid #606C38;
@@ -58,4 +71,13 @@ input[type=text] {
   
   input[type=password]:hover {
     border-bottom: 2px solid #BC6C25;
+  }
+
+  .e-avatar {
+      width: 70px;
+      height: 70px;
+  }
+
+  .container {
+    width: 500px;
   }

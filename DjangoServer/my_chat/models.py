@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -7,11 +7,14 @@ from django.shortcuts import get_object_or_404
 from rest_framework.authtoken.models import Token
 from django.utils import timezone
 
+from accounts.models import Account
+
+
 class ChatView(models.Model):
-    sender = models.ForeignKey(User, on_delete=models.CASCADE, default=None, related_name='sender')
-    receiver = models.ForeignKey(User, on_delete=models.CASCADE, default=None, related_name='receiver')
+    sender = models.ForeignKey(Account, on_delete=models.CASCADE, default=None, related_name='sender')
+    receiver = models.ForeignKey(Account, on_delete=models.CASCADE, default=None, related_name='receiver')
     sent_date = models.DateTimeField('date published')
-    textcontent = models.TextField(default = 'Hi Hamba !')
+    textcontent = models.TextField(default = 'Hi!')
 
 
     def __str__(self):
@@ -20,7 +23,7 @@ class ChatView(models.Model):
     def create_chat(message, senderid, receiverid):
         senderid = int(senderid)
         receiverid = int(receiverid)
-        chatnew = ChatView(sender = get_object_or_404(User, id=senderid), receiver = get_object_or_404(User, id=receiverid), sent_date = timezone.now(), textcontent = message)
+        chatnew = ChatView(sender = get_object_or_404(Account, id=senderid), receiver = get_object_or_404(Account, id=receiverid), sent_date = timezone.now(), textcontent = message)
         chatnew.save()
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)

@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
 
 export class SignupComponent implements OnInit {
     register;
+    avatars: string[] = ["../../assets/avatars/boy.png", "../../assets/avatars/girl-1.png", "../../assets/avatars/girl.png",
+                        "../../assets/avatars/man-1.png", "../../assets/avatars/man-2.png", "../../assets/avatars/man-3.png",
+                        "../../assets/avatars/man-4.png", "../../assets/avatars/man.png"]
 
     constructor(
         private router: Router,
@@ -21,6 +24,7 @@ export class SignupComponent implements OnInit {
         this.register = {
             username: '',
             password: '',
+            avatar: '../../assets/avatars/man-4.png'
         };
     }
     
@@ -42,5 +46,9 @@ export class SignupComponent implements OnInit {
               }
             }
           );
+    }
+
+    setUserAvatar(event, avatar){
+        this.register.avatar = avatar
     }
 }

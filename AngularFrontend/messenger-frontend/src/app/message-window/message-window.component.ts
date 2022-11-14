@@ -84,7 +84,7 @@ export class MessageWindowComponent implements OnInit {
         }
 
         if(this.message != ""){
-            if (this.receiver != this.sender) {
+            if (!(this.receiver === this.sender)) {
                 this.messages.push({msg: this.message, senderid: this.sender, receiverid: this.receiver})
             }
 

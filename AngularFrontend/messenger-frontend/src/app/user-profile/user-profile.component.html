@@ -6,10 +6,13 @@
 
 <h3>Choose someone to chat with!</h3>
 
-<div class="Users" *ngFor="let user of users | async; index as userId">
-    <h3>
-        <a [title]="user.username" [routerLink]="['/messagewindow', usercurrentId, userId+1]">
+<div class="container-center">
+  <div class="container-flex">
+    <div class="mb-2" *ngFor="let user of users | async; index as userId">
+        <span><img [src]="user.avatar" class="e-avatar"></span>
+        <b><a [title]="user.username" [routerLink]="['/messagewindow', usercurrentId, userId+1]">
           {{ user.username }}
-        </a>
-    </h3>
+        </a></b>
+    </div>
+  </div>
 </div>

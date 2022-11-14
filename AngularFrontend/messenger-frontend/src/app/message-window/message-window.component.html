@@ -7,7 +7,7 @@
     <div class="card-header justify-content-between align-items-center p-3 text-white border-bottom-0"
         style="border-top-left-radius: 15px; border-top-right-radius: 15px; background-color: #606C38;">
         <div *ngFor="let user of users | async">
-            <h3 *ngIf="user.id == receiver">{{ user.username }}</h3>
+            <h3 *ngIf="user.id === receiver">{{ user.username }}</h3>
         </div>
     </div>
 
@@ -17,7 +17,7 @@
 
             <!-- Message History -->
             <div *ngFor="let prevmsg of prevmessages">
-                <div *ngIf="prevmsg.sender == sender && prevmsg.receiver == receiver">
+                <div *ngIf="prevmsg.sender === sender && prevmsg.receiver === receiver">
                     <div class="d-flex justify-content-end mb-4">
                         <div class="card mask-custom">
                             <div class="card-header d-flex justify-content-between p-3"
@@ -28,12 +28,16 @@
                                 <p class="mb-0">{{ prevmsg.textcontent }}</p>
                             </div>
                         </div>
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp" alt="avatar 1" style="width: 45px; height: 100%;">
+                        <div *ngFor="let user of users | async">
+                            <img *ngIf="user.id === sender" [src]=user.avatar alt="avatar 1" style="width: 45px; height: 45px;">
+                        </div>
                     </div>
                 </div>
-                <div *ngIf="prevmsg.sender == receiver && prevmsg.receiver == sender && prevmsg.sender != prevmsg.receiver">
+                <div *ngIf="prevmsg.sender === receiver && prevmsg.receiver === sender && prevmsg.sender !== prevmsg.receiver">
                     <div class="d-flex justify-content-start mb-4">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp" alt="avatar 1" style="width: 45px; height: 100%;">
+                        <div *ngFor="let user of users | async">
+                            <img *ngIf="user.id === receiver" [src]=user.avatar alt="avatar 1" style="width: 45px; height: 45px;">
+                        </div>
                         <div class="card mask-custom">
                             <div class="card-header d-flex justify-content-between p-3"
                             style="border-bottom: 1px solid rgba(255,255,255,.3);">
@@ -49,7 +53,7 @@
 
             <!-- Current conversation messages -->
             <div class = "row" *ngFor="let data of messages">
-                <div *ngIf="data.receiverid == receiver && data.senderid == sender">
+                <div *ngIf="data.receiverid === receiver && data.senderid === sender">
                     <div class="d-flex justify-content-end mb-4">
                         <div class="card mask-custom">
                             <div class="card-header d-flex justify-content-between p-3"
@@ -60,12 +64,16 @@
                                 <p class="mb-0">{{ data.msg }}</p>
                             </div>
                         </div>
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp" alt="avatar 1" style="width: 45px; height: 100%;">
+                        <div *ngFor="let user of users | async">
+                            <img *ngIf="user.id === sender" [src]=user.avatar alt="avatar 1" style="width: 45px; height: 45px;">
+                        </div>
                     </div>       
                 </div>
-                <div *ngIf="data.senderid == receiver && data.senderid != data.receiverid">
+                <div *ngIf="data.senderid === receiver && !(data.senderid === data.receiverid)">
                     <div class="d-flex justify-content-start mb-4">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava5-bg.webp" alt="avatar 1" style="width: 45px; height: 100%;">
+                        <div *ngFor="let user of users | async">
+                            <img *ngIf="user.id === receiver" [src]=user.avatar alt="avatar 1" style="width: 45px; height: 45px;">
+                        </div>
                         <div class="card mask-custom">
                             <div class="card-header d-flex justify-content-between p-3"
                             style="border-bottom: 1px solid rgba(255,255,255,.3);">

@@ -1,6 +1,5 @@
 import ast
 
-from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import viewsets, permissions
@@ -10,12 +9,13 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+from accounts.models import Account
 from my_chat.models import ChatView
 from my_chat.serializers import UserSerializer, ChatViewSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
+    queryset = Account.objects.all()
     serializer_class = UserSerializer
     authentication_classes = [TokenAuthentication,]
     permission_classes = [permissions.IsAuthenticated]
@@ -37,7 +37,8 @@ class CustomAuthToken(ObtainAuthToken):
         return Response({
             'token': token.key,
             'user_id': user.id,
-            'username': user.username
+            'username': user.username,
+            'avatar': user.avatar
         })
 
 @csrf_exempt
@@ -54,10 +55,10 @@ def signup(request):
     if request.method == "POST":
         querydictstr = request.body.decode('UTF-8')
         querydict = ast.literal_eval(querydictstr)
-        user = User.objects.create_user(querydict['username'], None, querydict['password'])
+        user = Account.objects.create_user(querydict['username'], querydict['avatar'], querydict['password'])
         return Response({
             'user_id': user.id,
-            'username': user.username
+            'username': user.username,
         })
 
 
